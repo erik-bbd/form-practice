@@ -1,0 +1,15 @@
+<ng-container>
+  <h2>Food Form</h2>
+  <form [formGroup]="foodForm" (ngSubmit)="submit()">
+    <div>
+      <label>Name</label><br>
+      <input type="text" id="name" name="name" formControlName="name">
+    </div>
+    <div>
+      <label>Price</label><br>
+      <input type="number" id="price" name="price" formControlName="price">
+    </div>
+    <button mat-raised-button  type="submit" [disabled]="!foodForm.valid">Submit</button>
+    <button mat-button ="button"  (click)="delete()">Delete</button>
+  </form>
+</ng-container>

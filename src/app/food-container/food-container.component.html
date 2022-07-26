@@ -1,0 +1,14 @@
+
+<div style="align-items: center;" *ngIf="foods">
+  <ul>
+    <li *ngFor="let food of foods" >
+      <app-food-display [food]="food" (selected)="onSelect($event)"></app-food-display>
+    </li>
+  </ul>
+  <div *ngIf="editing">
+    <app-food-form [food]="selected" (onSubmit)="onSubmit($event)" (onDelete)="onDelete($event)"></app-food-form>
+  </div>
+  <div matRipple>
+      <button mat-button (click)="editing=true">New Food Item</button>
+  </div>
+</div>
