@@ -3,8 +3,8 @@
   <ul>
     <li *ngFor="let food of foods" >
       <span>
-        <app-food-display [food]="food" (onSelect)="onSelectHandler($event)"></app-food-display>
-        <app-delete [item]="food" (onDelete)="onDeleteHandler($event)"></app-delete>
+        <app-food-display style="display: inline-block" [food]="food" (onSelect)="onSelectHandler($event)"></app-food-display>
+        <app-delete style="display: inline-block" [item]="food" (onDelete)="onDeleteHandler($event)"></app-delete>
       </span>
       
     </li>

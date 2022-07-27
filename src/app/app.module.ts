@@ -4,17 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FoodFormComponent } from './food-form/food-form.component';
-import { FoodDisplayComponent } from './food-display/food-display.component';
-import { FoodContainerComponent } from './food-container/food-container.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { FoodFormComponent } from './components/food-form/food-form.component';
+import { FoodDisplayComponent } from './components/food-display/food-display.component';
+import { FoodContainerComponent } from './components/food-container/food-container.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
 import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
-import { DeleteComponent } from './delete/delete.component';
+import { DeleteComponent } from './components/delete/delete.component';
+import { ZarPipe } from './pipes/zar/zar.pipe';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -22,8 +23,8 @@ import { DeleteComponent } from './delete/delete.component';
     FoodFormComponent,
     FoodDisplayComponent,
     FoodContainerComponent,
-    SidebarComponent,
-    DeleteComponent
+    DeleteComponent,
+    ZarPipe
   ],
   imports: [
     BrowserModule,
@@ -34,6 +35,7 @@ import { DeleteComponent } from './delete/delete.component';
     MatSliderModule,
     MatButtonModule,
     MatRippleModule,
+    MatIconModule,
     HttpClientModule
   ],
   providers: [],

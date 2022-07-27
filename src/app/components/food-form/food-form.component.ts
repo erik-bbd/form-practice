@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Food } from '../food';
+import { Food } from '../../food';
 
 @Component({
   selector: 'app-food-form',

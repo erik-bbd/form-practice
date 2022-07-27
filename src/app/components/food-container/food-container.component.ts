@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Food } from '../food';
-import { FoodService } from '../food.service';
+import { Food } from '../../food';
+import { FoodService } from '../../food.service';
 import { MatButton} from '@angular/material/button';
 import { MatRipple } from '@angular/material/core';
 
