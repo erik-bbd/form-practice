@@ -13,6 +13,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCommonModule } from '@angular/material/core';
 import { MatRippleModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,7 @@ import { MatRippleModule } from '@angular/material/core';
     FoodDisplayComponent,
     FoodContainerComponent,
     SidebarComponent,
-    
-
-
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,8 @@ import { MatRippleModule } from '@angular/material/core';
     BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
-    MatRippleModule
+    MatRippleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

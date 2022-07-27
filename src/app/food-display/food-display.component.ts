@@ -9,15 +9,15 @@ import { Food } from '../food';
 export class FoodDisplayComponent implements OnInit {
 
   @Input() food?: Food;
-  @Output() selected: EventEmitter<any> = new EventEmitter();
+  @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSelect(){
-    this.selected.emit(this.food)
+  onClick(){
+    this.onSelect.emit(this.food)
   }
 
 }

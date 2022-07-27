@@ -33,9 +33,4 @@ export class FoodFormComponent implements OnInit {
     this.foodForm.reset();
   }
 
-  delete(): void {
-    this.onDelete.emit(this.foodForm.value);
-    this.foodForm.reset();
-  }
-
 }

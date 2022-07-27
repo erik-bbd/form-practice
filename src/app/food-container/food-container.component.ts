@@ -18,25 +18,25 @@ export class FoodContainerComponent implements OnInit {
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
-    this.foodService.get()
+    this.foodService.getAll()
       .subscribe(foods => this.foods = foods)
   }
 
-  onSelect(food: Food): void {
+  onSelectHandler(food: Food): void {
     this.selected = food;
     this.editing = true;
   }
 
-  onSubmit(food: Food): void {
+  onSubmitHandler(food: Food): void {
     this.foodService.update(food);
     this.editing = false;
     this.selected = null;
   }
 
-  onDelete(food: Food): void {
+  onDeleteHandler(food: Food): void {
     this.foodService.delete(food)
     this.editing = false;
-    this.selected = null;;
+    this.selected = null;
   }
 
 }

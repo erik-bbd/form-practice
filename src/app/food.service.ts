@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Food } from './food';
 import { Observable, of } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ export class FoodService {
     {id: 1, name:"Burger", price:46}
   ]
 
-  constructor() { }
+  constructor(private http: HttpClientModule) { }
 
-  get(): Observable<Food[]>{
+  getAll(): Observable<Food[]>{
     const foods = of(this.foods);
     return foods
   }
 
-  set(foods: Food[]): void {
+  setAll(foods: Food[]): void {
     this.foods = foods
   }
 

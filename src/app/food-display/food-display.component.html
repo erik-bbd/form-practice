@@ -1,3 +1,3 @@
 <div style="align-items: center;" *ngIf="food">
-  <button mat-flat-button (click)="onSelect()"><label>{{food.name}}</label><br></button>
+  <button mat-flat-button (click)="onClick()"><label>{{food.name}} </label><label> {{food.price | currency: 'ZAR'}}</label></button>
 </div>
