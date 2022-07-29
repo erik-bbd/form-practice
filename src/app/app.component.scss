@@ -7,6 +7,7 @@ background: #fffdfd;
 display: block;
 align-self: center;
 align-items: center;
+justify-self: center;
 justify-content: center;
 }
 .center {
@@ -14,6 +15,11 @@ justify-content: center;
     width: 25%;
     border: 3px solid rgb(87, 87, 87);
     padding: 10px;
+    align-self: center;
+    align-items: center;
+    justify-self: center;
+    justify-items: center;
+    justify-content: center;
   }
 .child {
 background-color: #686868;

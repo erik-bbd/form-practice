@@ -1,6 +1,6 @@
 <ng-container>
   <h2>Food Form</h2>
-  <form [formGroup]="foodForm" (ngSubmit)="submit()">
+  <form [formGroup]="foodForm" style="align-content: center;" (ngSubmit)="submit()">
     <div>
       <label>Name</label><br>
       <input type="text" id="name" name="name" formControlName="name">
@@ -9,6 +9,14 @@
       <label>Price</label><br>
       <input type="number" id="price" name="price" formControlName="price">
     </div>
+    <ng-container formArrayName="ingredients">
+      <label style="display: block;">Ingredients</label>
+      <ng-container *ngFor="let ingredient of ingredients.controls; let i = index">
+          <input type="text" id="ingredient" name="ingredient" formControlName={{i}}>
+      </ng-container>
+      <br>
+      <button mat-raised-button type="button" [disabled]="!ingredients.valid" (click)="addIngredient('')">Add Ingredient</button>
+    </ng-container>
     <button mat-raised-button  type="submit" [disabled]="!foodForm.valid">Submit</button>
   </form>
 </ng-container>

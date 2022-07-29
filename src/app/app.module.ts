@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule, FormArray} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteComponent } from './components/delete/delete.component';
 import { ZarPipe } from './pipes/zar/zar.pipe';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon'
     FoodDisplayComponent,
     FoodContainerComponent,
     DeleteComponent,
-    ZarPipe
+    ZarPipe,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +38,7 @@ import { MatIconModule } from '@angular/material/icon'
     MatRippleModule,
     MatIconModule,
     HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

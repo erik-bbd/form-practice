@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Food } from './food';
 import { Observable, of } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
 
-  foods: Food[] = [
-    {id: 0, name: "Lasagne", price:50},
-    {id: 1, name:"Burger", price:46}
-  ]
 
-  constructor(private http: HttpClientModule) { }
+  foods: Food[] = [];
+
+  constructor(private http: HttpClient) { 
+    this.http.get<Food[]>('http://localhost:8080/foods').subscribe(result => {
+      result.map(food => this.foods.push(food));
+    })
+  }
 
   getAll(): Observable<Food[]>{
     const foods = of(this.foods);
@@ -25,27 +27,31 @@ export class FoodService {
   }
 
   add(food: Food): void {
-    food.id = Math.max(...this.foods.map(o => o.id)) + 1
-    this.foods.push(food)
+    console.log(JSON.stringify(food))
+    this.http.post<Food>('http://localhost:8080/foods', JSON.stringify(food), {headers: {'Content-Type': 'application/json'}})
+    console.log("posting.....")
   }
 
-  update(food: Food): void {
-    let updateItem = this.foods.find((obj) => {
-      return obj.id === food.id
-    });
-    if(updateItem){
-      this.foods[this.foods.indexOf(updateItem, 0)] = food;
-    } else {
-      this.add(food);
-    }
+  update(food: Food, updateFood: Food): void{
+    this.foods[this.foods.indexOf(updateFood, 0)] = food
+  }
+
+  publish(food: Food): void {
+    const publishItem = this.find(food)
+    publishItem ?  this.update(food, publishItem): this.add(food);
   }
 
   delete(food: Food): void {
-    let deleteItem = this.foods.find((obj) => {
-      return obj.id === food.id
-    });
+    const deleteItem = this.find(food)
     if (deleteItem) {
       this.foods.splice(this.foods.indexOf(deleteItem, 0), 1)
     }
+  }
+
+  find(food: Food){
+    let findItem = this.foods.find((obj) => {
+      return obj.id === food.id
+    });
+    return findItem
   }
 }

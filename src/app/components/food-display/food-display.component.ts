@@ -14,6 +14,7 @@ export class FoodDisplayComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.food)
   }
 
   onClick(){

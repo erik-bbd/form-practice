@@ -28,7 +28,7 @@ export class FoodContainerComponent implements OnInit {
   }
 
   onSubmitHandler(food: Food): void {
-    this.foodService.update(food);
+    this.foodService.publish(food);
     this.editing = false;
     this.selected = null;
   }
