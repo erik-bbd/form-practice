@@ -12,14 +12,33 @@ export class FoodService {
   foods: Food[] = [];
 
   constructor(private http: HttpClient) { 
+    this.readFoods()
+  }
+
+  foodsObserver(): Observable<Food[]>{
+    const foods = of(this.foods);
+    return foods
+  }
+  
+  createFood(food: Food): void {
+    this.http.post<Food>('http://localhost:8080/foods', food).subscribe(result => {
+      console.log(result)
+    })
+  }
+
+  readFoods(): void {
     this.http.get<Food[]>('http://localhost:8080/foods').subscribe(result => {
       result.map(food => this.foods.push(food));
     })
   }
 
-  getAll(): Observable<Food[]>{
-    const foods = of(this.foods);
-    return foods
+  updateFoods(): void {
+
+  }
+
+
+  deleteFood(food: Food): void {
+
   }
 
   setAll(foods: Food[]): void {
@@ -27,9 +46,13 @@ export class FoodService {
   }
 
   add(food: Food): void {
-    console.log(JSON.stringify(food))
-    this.http.post<Food>('http://localhost:8080/foods', JSON.stringify(food), {headers: {'Content-Type': 'application/json'}})
-    console.log("posting.....")
+
+    food.id = Math.max(...this.foods.map(food => food.id)) + 1;
+    this.foods.push(food)
+    this.createFood(food)
+    // console.log(JSON.stringify(food))
+    // this.http.post<Food>('http://localhost:8080/foods', JSON.stringify(food), {headers: {'Content-Type': 'application/json'}})
+    // console.log("posting.....")
   }
 
   update(food: Food, updateFood: Food): void{
@@ -37,8 +60,9 @@ export class FoodService {
   }
 
   publish(food: Food): void {
+    console.log(food)
     const publishItem = this.find(food)
-    publishItem ?  this.update(food, publishItem): this.add(food);
+    publishItem ?  this.update(food, publishItem) : this.add(food);
   }
 
   delete(food: Food): void {
@@ -55,3 +79,5 @@ export class FoodService {
     return findItem
   }
 }
+
+

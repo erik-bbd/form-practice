@@ -18,7 +18,7 @@ export class FoodContainerComponent implements OnInit {
   constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
-    this.foodService.getAll()
+    this.foodService.foodsObserver()
       .subscribe(foods => this.foods = foods)
   }
 
