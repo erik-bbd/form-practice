@@ -1,1 +1,9 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+button {
+    display: inline;
+}
+
+button:hover {
+    background-color: rgb(233, 150, 122, .2);
+}

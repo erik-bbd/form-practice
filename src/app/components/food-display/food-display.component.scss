@@ -1,0 +1,14 @@
+div {
+    width: 90%;
+    display: flex;
+}
+
+button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button:hover {
+    cursor: pointer;
+}

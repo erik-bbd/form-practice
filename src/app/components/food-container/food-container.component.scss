@@ -1,0 +1,37 @@
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    //left: 25%;
+    //transform: translate(25%, 0);
+}
+
+div {
+    width: 100%;
+    align-items: center;
+}
+
+app-food-display {
+    width: 100%;
+    display: flex;
+}
+
+app-delete {
+    width: 5%;
+    padding-right: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+button {
+    width: 100%;
+}
+
+
+
+
+
