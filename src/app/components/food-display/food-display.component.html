@@ -1,3 +1,9 @@
-<div *ngIf="food">
-  <button mat-button (click)="onClick()"><label>{{food.name}}</label><label>{{food.price | zar}}</label></button>
+<div class="div" *ngIf="food">
+  <button class="button" mat-button (click)="onClick()">
+    <div class="button-div">
+      <span>{{food.name}}</span>
+      <span>{{food.price | zar}}</span>
+    </div>
+    
+  </button>
 </div>

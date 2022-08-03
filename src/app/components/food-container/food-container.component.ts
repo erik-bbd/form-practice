@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Food } from '../../food';
 import { FoodService } from '../../food.service';
-import { MatButton} from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 import { MatRipple } from '@angular/material/core';
 
 @Component({
@@ -11,32 +11,45 @@ import { MatRipple } from '@angular/material/core';
 })
 export class FoodContainerComponent implements OnInit {
 
-  foods?: Food[];
-  selected?: any;
-  editing: Boolean = false;
+  foods?: Food[]
+  selected?: any
+  editing: Boolean = false
 
-  constructor(private foodService: FoodService) { }
+  constructor(private foodService: FoodService) {
+   this.loadFoods();
+  }
 
+  loadFoods(){
+    this.foodService.getFoods().subscribe((foods:Food[]) => this.foods = foods);
+  }
+  
   ngOnInit(): void {
-    this.foodService.foodsObserver()
-      .subscribe(foods => this.foods = foods)
+
   }
 
   onSelectHandler(food: Food): void {
-    this.selected = food;
-    this.editing = true;
+    this.selected = food
+    this.editing = true
   }
 
   onSubmitHandler(food: Food): void {
-    this.foodService.publish(food);
-    this.editing = false;
-    this.selected = null;
+    this.foodService.newFood(food)
+      .subscribe(() => {
+        this.loadFoods()
+        this.editing = false
+        this.selected = null
+      })
+
   }
 
   onDeleteHandler(food: Food): void {
-    this.foodService.delete(food)
-    this.editing = false;
-    this.selected = null;
+    this.foodService.deleteFood(food)
+    .subscribe(()=>{
+      this.loadFoods();
+      this.editing = false
+      this.selected = null
+    })
+    
   }
 
 }

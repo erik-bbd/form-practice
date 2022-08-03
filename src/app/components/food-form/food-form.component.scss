@@ -4,15 +4,60 @@ h2 {
 }
 
 label {
-    display: flex;
-    justify-content: center;
+    display: inline-block;
+    width: 40%;
+    padding-left: 5%;
+    font-weight: 500;
 }
 
-input {
-    display: flex;
-    justify-content: center;
+.input {
+    display: inline-block;
+    width: 70%;
+    margin-right: 10%;
 }
 
-ng-container {
+.form-input-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    width: 100%;
+}
+
+.ingredient-div {
+    display: flex;
     width:100%;
+    justify-content: space-between;
+}
+
+.form-button {
+    width: 100%;
+}
+
+
+.ingredient-div {
+    button {
+        width: 85%;
+        margin-right: 3.8%;
+    }
+}
+
+.ingredient-inputs {
+    width: 80%;
+    margin-right: 3.8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &:focus {
+        background-color: rgb(127, 255, 212, .2);
+    }
+    &:hover {
+        background-color: rgb(127, 255, 212, .1);
+    }
+}
+
+.ingredients-container {
+    width: 100%;
 }

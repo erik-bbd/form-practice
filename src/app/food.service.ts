@@ -12,7 +12,7 @@ export class FoodService {
   foods: Food[] = [];
 
   constructor(private http: HttpClient) { 
-    this.readFoods()
+    this.getFoods()
   }
 
   foodsObserver(): Observable<Food[]>{
@@ -20,39 +20,21 @@ export class FoodService {
     return foods
   }
   
-  createFood(food: Food): void {
-    this.http.post<Food>('http://localhost:8080/foods', food).subscribe(result => {
-      console.log(result)
-    })
+  newFood(food: Food): Observable<any> {
+    return this.http.post<Food>('http://localhost:8080/foods', food)
   }
 
-  readFoods(): void {
-    this.http.get<Food[]>('http://localhost:8080/foods').subscribe(result => {
-      result.map(food => this.foods.push(food));
-    })
+  getFoods(): Observable<Food[]> {
+    return this.http.get<Food[]>('http://localhost:8080/foods');
   }
 
-  updateFoods(): void {
-
+  updateFood(food: Food): Observable<any> {
+    return this.http.patch<Food>('http://localhost:8080/foods', food)
   }
 
 
-  deleteFood(food: Food): void {
-
-  }
-
-  setAll(foods: Food[]): void {
-    this.foods = foods
-  }
-
-  add(food: Food): void {
-
-    food.id = Math.max(...this.foods.map(food => food.id)) + 1;
-    this.foods.push(food)
-    this.createFood(food)
-    // console.log(JSON.stringify(food))
-    // this.http.post<Food>('http://localhost:8080/foods', JSON.stringify(food), {headers: {'Content-Type': 'application/json'}})
-    // console.log("posting.....")
+  deleteFood(food: Food): Observable<any> {
+    return this.http.delete<Food>(`http://localhost:8080/foods/${food.id}`)
   }
 
   update(food: Food, updateFood: Food): void{
@@ -62,14 +44,12 @@ export class FoodService {
   publish(food: Food): void {
     console.log(food)
     const publishItem = this.find(food)
-    publishItem ?  this.update(food, publishItem) : this.add(food);
+    publishItem ?  this.update(food, publishItem) : this.newFood(food);
+    this.getFoods();
   }
 
   delete(food: Food): void {
-    const deleteItem = this.find(food)
-    if (deleteItem) {
-      this.foods.splice(this.foods.indexOf(deleteItem, 0), 1)
-    }
+    this.deleteFood(food)
   }
 
   find(food: Food){

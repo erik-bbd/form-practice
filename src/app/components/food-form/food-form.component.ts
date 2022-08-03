@@ -12,7 +12,6 @@ export class FoodFormComponent implements OnInit {
   foodForm: FormGroup<any>;
   @Input() food?: Food;
   @Output() onSubmit: EventEmitter<any> = new EventEmitter();
-  @Output() onDelete: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.foodForm = new FormGroup({
