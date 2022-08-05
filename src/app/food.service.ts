@@ -16,20 +16,20 @@ export class FoodService {
   }
   
   newFood(food: Food): Observable<any> {
-    return this.http.post<Food>('http://localhost:8080/foods', food)
+    return this.http.post<Food>('http://localhost:8080/food', food)
   }
 
   getFoods(): Observable<Food[]> {
-    return this.http.get<Food[]>('http://localhost:8080/foods')
+    return this.http.get<Food[]>('http://localhost:8080/food')
   }
 
   updateFood(food: Food): Observable<any> {
-    return this.http.patch<Food>('http://localhost:8080/foods', food)
+    return this.http.patch<Food>('http://localhost:8080/food', food)
   }
 
 
   deleteFood(food: Food): Observable<any> {
-    return this.http.delete<Food>(`http://localhost:8080/foods/${food.id}`)
+    return this.http.delete<Food>(`http://localhost:8080/food/${food.id}`)
   }
 
   publish(food: Food): Observable<any> {
