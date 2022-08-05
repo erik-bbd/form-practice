@@ -14,18 +14,13 @@ export class FoodService {
   constructor(private http: HttpClient) { 
     this.getFoods()
   }
-
-  foodsObserver(): Observable<Food[]>{
-    const foods = of(this.foods);
-    return foods
-  }
   
   newFood(food: Food): Observable<any> {
     return this.http.post<Food>('http://localhost:8080/foods', food)
   }
 
   getFoods(): Observable<Food[]> {
-    return this.http.get<Food[]>('http://localhost:8080/foods');
+    return this.http.get<Food[]>('http://localhost:8080/foods')
   }
 
   updateFood(food: Food): Observable<any> {
@@ -37,19 +32,14 @@ export class FoodService {
     return this.http.delete<Food>(`http://localhost:8080/foods/${food.id}`)
   }
 
-  update(food: Food, updateFood: Food): void{
-    this.foods[this.foods.indexOf(updateFood, 0)] = food
-  }
-
-  publish(food: Food): void {
+  publish(food: Food): Observable<any> {
     console.log(food)
     const publishItem = this.find(food)
-    publishItem ?  this.update(food, publishItem) : this.newFood(food);
-    this.getFoods();
-  }
-
-  delete(food: Food): void {
-    this.deleteFood(food)
+    if (publishItem) {
+      return this.updateFood(food)
+    } else {
+      return this.newFood(food)
+    }
   }
 
   find(food: Food){

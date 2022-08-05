@@ -1,0 +1,34 @@
+<ng-container>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="form-div">
+            <label>Username</label>
+            <input type="text" formControlName="username">
+            <br>
+            
+        </div>
+        <div class="not-valid-div" *ngIf="submitted && f['username'].errors">
+                
+            <div *ngIf="f['username'].errors['required']">
+                *Username is required
+            </div> 
+        </div>
+        <div class="form-div">
+            <label>Password</label>
+            <input type="password" formControlName="password">
+            <br>
+            
+        </div>
+        <div class="not-valid-div" *ngIf="submitted && f['password'].errors">
+                
+            <div *ngIf="f['password'].errors['required']">
+                *Password is required
+            </div> 
+        </div>
+        <div class="buttons-div">
+            <button mat-button (click)="submit()">Login</button>
+            <a routerLink="../register">Register</a>
+        </div>
+        
+    </form>
+</ng-container>
+

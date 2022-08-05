@@ -1,0 +1,43 @@
+<form [formGroup]="registerForm">
+    <div>
+        <label>Username</label>
+        <input type="text" formControlName="username">
+        <div *ngIf="submitted && f['username'].errors">
+            <div *ngIf="f['username'].errors['required']">
+                *Username is required
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email" formControlName="email">
+        <div *ngIf="submitted && f['email'].errors">
+            <div *ngIf="f['email'].errors['required']">
+                *Email is required
+            </div>
+            <div *ngIf="f['email'].errors['email']">
+                *Valid email required
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" formControlName="password1">
+        <div *ngIf="submitted && f['password1'].errors">
+            <div *ngIf="f['password1'].errors['required']">
+                *Password is required
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>Confirm Password</label>
+        <input type="password" formControlName="password2">
+        <div *ngIf="submitted && f['password2'].errors">
+            <div *ngIf="f['password2'].errors['required']">
+                *Password is required
+            </div>
+        </div>
+    </div>
+    <button mat-button (click)="submit()">Register</button>
+    <a routerLink="../">Login</a>
+</form>

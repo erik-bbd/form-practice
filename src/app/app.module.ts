@@ -17,6 +17,8 @@ import { DeleteComponent } from './components/delete/delete.component';
 import { ZarPipe } from './pipes/zar/zar.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HttpClient } from '@angular/common/http';
     FoodContainerComponent,
     DeleteComponent,
     ZarPipe,
+    LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
