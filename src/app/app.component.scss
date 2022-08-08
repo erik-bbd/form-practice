@@ -33,3 +33,33 @@ h1 {
 .app-food-container {
     width: 100%;
 }
+
+@keyframes rounder-in {
+    from {border-radius: 0;}
+    to {border-radius: 40px;}
+}
+@keyframes rounder-out {
+    from {border-radius: 40px;}
+    to {border-radius: 0px;}
+}
+
+
+app-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 5px;
+    border-style: solid;
+    border-color: black;
+    margin: 5px;
+    animation-name: rounder-out;
+    animation-duration: .5s;
+
+    
+    &:hover {
+        animation-name: rounder-in;
+        animation-duration: .5s;
+        border-radius: 40px;
+    }
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   loginForm: FormGroup<any>
   submitted = false
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -25,8 +27,11 @@ export class LoginFormComponent implements OnInit {
     return this.loginForm.controls
   }
 
-  submit() {
+  async submit() {
     this.submitted = true
+    await this.authService.Authenticate(this.loginForm.value)
+    console.log(this.authService.isAuthenticated())
+    this.router.navigate(['/'])
   }
 
 }

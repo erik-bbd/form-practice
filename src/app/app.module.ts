@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     ZarPipe,
     LoginFormComponent,
     RegisterFormComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,

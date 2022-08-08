@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCommonModule } from '@angular/material/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
